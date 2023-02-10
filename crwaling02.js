@@ -40,6 +40,7 @@ async function main() {        //비동기 I/O 지원 함수 정의 async
         console.log(dom(price).text());
     });
 
+
 };
 
 
