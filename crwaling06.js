@@ -16,7 +16,7 @@ https://www.npmjs.com/package/selenium-webdriver
     */
 
 
-
+  /*await 는 비동기에서 쓴다.>?      비동기 - 한개씩 처리 방식        */
 
 
 
@@ -53,7 +53,7 @@ async function main() {        //비동기 I/O 지원 함수 정의 async
         //영화제목 추출
         let movies=dom('.feature_home div:nth-child(3).slide_ranking .tit_item');
         //영화평점 추출
-        let rates=dom('.feature_home div:nth-child(3).slide_ranking .txt_num:first-child');
+        let rates=dom('.feature_home div:nth-child(3).slide_ranking .txt_num:first-child');   // txt_num으로 평점과 예매율 둘다 나타내서 child를 사용
 
         //영화예매율 추출
         let rsrvs=dom('.feature_home div:nth-child(3).slide_ranking .txt_num:last-child');
@@ -65,7 +65,7 @@ async function main() {        //비동기 I/O 지원 함수 정의 async
         movies.each((idx,movie)=>{
             let title = dom(movie).text().trim();
             //console.log(dom(movie).text().trim());
-            moviess.push();
+            moviess.push(movie);
         });
         
         //추출된 영화평점 출력
