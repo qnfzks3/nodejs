@@ -13,8 +13,8 @@ const cheerio=require('cheerio');                       // DOM라이브러리 �
 async function main() {        //비동기 I/O 지원 함수 정의 async
     //접속할 url지정
     const URL = 'http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty';
-    const params={'serviceKey': 'SMqEHcgO3gEigZ+qpaX4S/RSZEhArOTrEXypOX6TDZuGUnLRdkXDGGHpTb6voU+IgBODJBXHBLU37OFBYYfsDg==','returnType':'json','sidoName':'전국'
-    ,'numOfRows':500}; //'numOfRows':500
+    const params={'serviceKey': 'SMqEHcgO3gEigZ+qpaX4S/RSZEhArOTrEXypOX6TDZuGUnLRdkXDGGHpTb6voU+IgBODJBXHBLU37OFBYYfsDg==','returnType':'json','sidoName':'서울'
+    ,'numOfRows':500, 'ver':1.3}; //'numOfRows':500
     const headers ={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Edg/109.0.1518.78'};
 
 
@@ -31,12 +31,26 @@ async function main() {        //비동기 I/O 지원 함수 정의 async
     //console.log(items);
 
     //미세먼지 정보 출력
-    //pm25Value 는 출력 안됨!
+
+
+
 
     for (let item of items){
-        console.log(item.sidoName,item.stationName,item.pm10Value,item.pm25Value,item.dataTime);   //키명
+        console.log(item.sidoName,item.stationName,item.pm10Value,item.pm25Value,item.dataTime,pmGrade(item.pm10Grade),pmGrade(item.pm25Grade));   //키명
     }
-}
 
+
+ }
+
+
+let pmGrade = (val)=>{
+    /*let emoji= '😱';
+    if (val=='1') emoji='😍';
+    else if (val=='2') emoji='😐';
+    else if (val=='3') emoji='😨';*/
+    let emojis = ['😍','😐','😨','😱'];
+
+    return emojis[parseInt(val)-1];
+};
 
 main();
