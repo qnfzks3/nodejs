@@ -28,8 +28,7 @@ async function main() {
         oracledb.initOracleClient(
             {libDir: 'c:/Java/instantclient_19_17'});
         conn = await oracledb.getConnection({
-            user: 'bigdata', password: 'bigdata',
-            connectString: '52.78.108.132:1521/XE'
+            user:'bigdata', password:'bigdata',connectionString:'13.124.192.232:1521/XE'
         });
 
         let result = await conn.execute(sql, params, options);
